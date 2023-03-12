@@ -6,12 +6,12 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-        name: 'carouselImage',
-        title: 'Carousel image',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      }),
+      name: 'carouselImage',
+      title: 'Carousel image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
 })
