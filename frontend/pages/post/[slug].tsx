@@ -93,11 +93,12 @@ const Post = ({ post }) => {
                     boxShadow: 3,
                   }}
                 >
+                  <Box sx={{display:'flex', justifyContent:'center', alignItems:'center', color:'#343434', m:4, width:'400px'}}>
                   <Box>
-                    {frames}
-                    <Box>{findFramesDes[index]}</Box>
+                    <Box sx={{fontSize:'24px', fontWeight:'bold'}}>{frames}</Box>
+                    <Box sx={{mt:2}}>{findFramesDes[index]}</Box>
                   </Box>
-
+                  </Box>
                   <Box sx={{ width: "56%" }}>
                     <PortableText
                       value={findFramesImg[index]}
