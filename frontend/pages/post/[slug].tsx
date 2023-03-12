@@ -49,7 +49,7 @@ const Post = ({ post }) => {
       <Header/>
       <Box>
       {categories && (
-          <Carousel width="100%" animation="slide" swipe="true" duration="200">
+          <Carousel width="100%" animation="slide" swipe="true" duration="100">
           {categories.map((category, index) => (
             
               <Box key={category}>
