@@ -5,6 +5,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import { PortableText } from '@portabletext/react'
 import client from '../../client'
 import Header from '../../components/header'
+import ResponsiveAppBar from '../../components/menu'
 import {Box, Grid, Theme} from '@mui/material';
 import Carousel from 'react-material-ui-carousel'
 
@@ -37,6 +38,9 @@ const Post = ({ post }) => {
     categories,
     authorImage,
     categoriesImg,
+    findFramesTitle,
+    findFramesDes,
+    findFramesImg,
     body = [],
   } = post;
   
@@ -61,6 +65,17 @@ const Post = ({ post }) => {
           </Carousel>
       )}
       </Box>
+      <Box>
+            {findFramesTitle && (
+              <Box >
+              {findFramesTitle.map((frames,index)=>(
+                <Box  key={frames}>
+                  {frames}
+                </Box>
+              ))}
+              </Box>
+            )}
+      </Box>
       {/* {authorImage && (
         <div>
           <img
@@ -81,6 +96,9 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   "categories": categories[]->title,
   "categoriesImg": categories[]->carouselImage,
   "authorImage": author->image,
+  "findFramesTitle": findFrames[]->title,
+  "findFramesDes": findFrames[]->description,
+  "findFramesImg": findFrames[]->carouselImage,
   body
 }`
 export async function getServerSidePaths() {

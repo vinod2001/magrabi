@@ -5,6 +5,13 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
 
 const sxStyle = {
     backgroundColor:'#3A3A3A',
@@ -60,8 +67,28 @@ const HeaderitemWrapperWidth = {
 
 
 function Header() {
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const pages = ['Eyeglasses', 'Sunglasses', 'Contact Lenses', 'Accessories'];
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
     return (
-        <Grid >
+        <AppBar position="static" sx={{background:'#fff'}}>
+        <Grid>
             <Grid item XS={12} sx={sxStyle}>
                 <Box >
             <Box component="span" sx={spanStyle}>FREE SHIPPING FOR ALL ORDERS,</Box> LIMITED TIME ONLY | FAST SHIPPING WITHIN <Box component="span" sx={spanStyle}>2-4 BUSINESS DAYS*</Box> | FREE <Box component="span" sx={spanStyle}>IN-STORE</Box> RETURN
@@ -93,7 +120,27 @@ function Header() {
         </Box>
       </Box>
             </Grid>
+            <Grid item XS={12}>
+            <Toolbar disableGutters>
+            <Box
+         sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',justifyContent: 'center',
+         alignItems: 'center', } }}
+      >
+        {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 1.8, color: 'black', fontWeight:'bold', display: 'block',ml:8 }}
+              >
+                {page}
+              </Button>
+            ))}
+      
+        </Box>
+        </Toolbar>
+        </Grid>
         </Grid>   
+        </AppBar>
     );
 
 }
