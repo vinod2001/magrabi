@@ -45,6 +45,41 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
+    
+    defineField({
+      name: 'topCategoriesHeading',
+      title: 'Top Categories Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'topCategories',
+      title: 'Top Categories',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'category'}}],
+    }),
+    defineField({
+      name: 'topBrandsHeading',
+      title: 'Top Brands Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'topBrands',
+      title: 'Top Brands',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'category'}}],
+    }),
+    defineField({
+      name: 'largeBanners',
+      title: 'Large Banners',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'category'}}],
+    }),
+    defineField({
+      name: 'biggerBanners',
+      title: 'Bigger Banners',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'category'}}],
+    }),
     defineField({
       name: 'publishedAt',
       title: 'Published at',

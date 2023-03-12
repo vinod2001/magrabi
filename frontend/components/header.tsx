@@ -61,7 +61,7 @@ const HeaderItemInnerWrapper = {
 };
 
 const HeaderitemWrapperWidth = {
-  width: "18%",
+  width: "20%",
 };
 
 function Header() {
