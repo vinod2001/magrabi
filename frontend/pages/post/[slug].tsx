@@ -9,7 +9,12 @@ import ResponsiveAppBar from "../../components/menu";
 import { Box, Grid, Theme, Paper, Card, SubCategory } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import Divider from '@mui/material/Divider';
+import { Roboto } from '@next/font/google';
 
+const roboto = Roboto({
+  subsets:['latin'],
+  weight: '400'
+})
 function urlFor(source) {
   return imageUrlBuilder(client).image(source);
 }
@@ -50,6 +55,7 @@ const Post = ({ post }) => {
     largeBanners,
     biggerBanners,
     biggerBannersImg,
+    biggerBannersDes,
     body = [],
   } = post;
 
@@ -335,10 +341,18 @@ sx={{
                {biggerBanners && (
                 biggerBanners.map((item,index)=>(
                   <Box key={index} sx={{ width:'49%', borderLeft:'0px solid red'}}>
+                    <Box>
                    <PortableText
                       value={biggerBannersImg[index]}
                       components={ptComponents}
                     />  
+                    </Box>
+                    <Box sx={{mt:4,mb:2,fontSize:'30px'}}>
+                      {item}
+                    </Box>
+                    <Box>
+                      {biggerBannersDes[index]}
+                    </Box>
                   </Box>
                 ))
                 )}
@@ -371,6 +385,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   "largeBanners":largeBanners[]->carouselImage,
   "biggerBanners":biggerBanners[]->title,
   "biggerBannersImg":biggerBanners[]->carouselImage,
+  "biggerBannersDes":biggerBanners[]->description,
   body
 }`;
 export async function getServerSidePaths() {
